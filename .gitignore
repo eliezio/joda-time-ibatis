@@ -3,3 +3,6 @@ target/
 .project
 .settings
 *.iml
+build/
+.gradle/
+.idea/
