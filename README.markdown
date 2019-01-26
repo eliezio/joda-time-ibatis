@@ -33,16 +33,16 @@ POJO/VO
 		private DateTime datetime;
 		...
 
-iBatis XML
+MyBatis XML
 
 	<resultMap id="fooResultMap" class="intouch.model.core.FooVO" >
-		<result column="localdate" property="localdate" jdbcType="DATE" typeHandler="org.joda.time.ibatis.handlers.LocalDateTypeHandlerCallback" />
-		<result column="datetime" property="datetime" jdbcType="TIMESTAMP" typeHandler="org.joda.time.ibatis.handlers.DateTimeTypeHandlerCallback" />
+		<result column="localdate" property="localdate" jdbcType="DATE" typeHandler="org.joda.time.mybatis.handlers.LocalDateTypeHandlerCallback" />
+		<result column="datetime" property="datetime" jdbcType="TIMESTAMP" typeHandler="org.joda.time.mybatis.handlers.DateTimeTypeHandlerCallback" />
 	</resultMap>
 
 	<parameterMap id="fooParameterMap" class="intouch.model.core.FooVO" >
-		<parameter property="localdate" jdbcType="DATE" typeHandler="org.joda.time.ibatis.handlers.LocalDateTypeHandlerCallback" />
-		<parameter property="datetime" jdbcType="TIMESTAMP" typeHandler="org.joda.time.ibatis.handlers.DateTimeTypeHandlerCallback" />
+		<parameter property="localdate" jdbcType="DATE" typeHandler="org.joda.time.mybatis.handlers.LocalDateTypeHandlerCallback" />
+		<parameter property="datetime" jdbcType="TIMESTAMP" typeHandler="org.joda.time.mybatis.handlers.DateTimeTypeHandlerCallback" />
 	</parameterMap>
 
 	<select id="loadFoo" resultMap="fooResultMap">

@@ -9,7 +9,7 @@ plugins {
 }
 
 group = 'io.eliez'
-description = 'Joda TypeHandlerCallback support for iBatis'
+description = 'Joda TypeHandlerCallback support for MyBatis'
 
 sourceCompatibility = '1.8'
 
@@ -22,7 +22,7 @@ repositories {
 }
 
 dependencies {
-    api('org.apache.ibatis:ibatis-sqlmap:2.3.4.726')
+    api('org.mybatis:mybatis:3.4.6')
     api('joda-time:joda-time:2.10')
 }
 
@@ -58,13 +58,13 @@ def pomConfig = {
     }
 
     scm {
-        url 'https://github.com/eliezio/joda-time-ibatis.git'
+        url "https://github.com/eliezio/${project.name}.git"
     }
 }
 
 publishing {
     publications {
-        'joda-time-ibatis'(MavenPublication) {
+        "${project.name}"(MavenPublication) {
             from components.java
             artifact tasks.sourcesJar
             artifact tasks.javadocJar
@@ -75,7 +75,7 @@ publishing {
                 def root = asNode()
                 root.appendNode('description', project.description)
                 root.appendNode('name', project.name)
-                root.appendNode('url', 'https://github.com/eliezio/joda-time-ibatis.git')
+                root.appendNode('url', "https://github.com/eliezio/${project.name}.git")
                 root.children().last() + pomConfig
             }
         }
@@ -85,16 +85,16 @@ publishing {
 bintray {
     user = System.getenv('BINTRAY_USER')
     key = System.getenv('BINTRAY_API_KEY')
-    publications = ['joda-time-ibatis']
+    publications = [project.name]
     pkg {
         repo = 'maven'
-        name = 'joda-time-ibatis'
+        name = project.name
         userOrg = user
         desc = project.description
         licenses = ['MIT']
-        vcsUrl = 'https://github.com/eliezio/joda-time-ibatis.git'
+        vcsUrl = "https://github.com/eliezio/${project.name}.git"
         publicDownloadNumbers = true
-        githubRepo = 'eliezio/joda-time-ibatis'
+        githubRepo = "eliezio/${project.name}"
         githubReleaseNotesFile = 'README.markdown'
         version {
             name = project.version
